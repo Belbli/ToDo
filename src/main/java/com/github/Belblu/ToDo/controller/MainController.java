@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Controller
@@ -33,11 +34,12 @@ public class MainController {
 
         if(user != null) {
             data.put("profile", user);
-            data.put("todos", toDoService.selectAll());
+            data.put("todos", user.getToDoItems());
+            data.put("allTodos", toDoService.selectAll(user));
         }
         model.addAttribute("frontendData", data);
 
-        model.addAttribute("todo", toDoService.selectAll());
+        //model.addAttribute("todo", toDoService.selectAll());
 
         model.addAttribute("isDevMode", "dev".equals(profile));
 

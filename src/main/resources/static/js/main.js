@@ -2,6 +2,7 @@ import Vue from 'vue'
 import 'api/resource'
 import VueResource from 'vue-resource'
 import store from 'store/store'
+import router from 'router/router'
 import App from 'pages/App.vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
@@ -14,6 +15,7 @@ new Vue({
     vuetify: new Vuetify({}),
     el: '#app',
     store,
+    router,
     render: a => a(App)
 })
 

@@ -32,7 +32,6 @@
                  <div class="caption grey--text">Due by</div>
                  <div>{{ todo.dateUntil }}</div>
                </v-flex>
-
                <v-flex xs2 sm4 md2>
                     <v-btn class="mb-2" text @click="edit"><v-icon>edit</v-icon></v-btn>
                     <v-btn class="mb-2" text @click="del">
@@ -43,7 +42,6 @@
                  <div class="right">
                    <v-chip small color="teal" :class="`${status} white--text my-2`">{{ status }}</v-chip>
                  </div>
-
                </v-flex>
              </v-layout>
 
@@ -55,7 +53,7 @@
 <script>
 import { mapActions } from 'vuex'
     export default{
-        props: ['todo', 'editItem', 'deleteItem', 'todos'],
+        props: ['todo', 'editItem', 'todos'],
         data() {
             return{
                 expandOnHover: false,

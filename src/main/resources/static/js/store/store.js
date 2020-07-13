@@ -10,7 +10,7 @@ export default new Vuex.Store({
         profile: frontendData.profile,
     },
     getters: {
-      getTodos: state => state.todos
+      getTodos: state =>  state.todos
     },
     mutations: {
         addTodoMutation(state, todo) {

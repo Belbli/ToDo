@@ -25,41 +25,33 @@ public class ToDoController {
     public ToDoItem save(@RequestBody ToDoItem toDoItem,
                          @AuthenticationPrincipal User user
     ) {
+        user.addItem(toDoItem);
         return toDoService.save(toDoItem, user);
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") UUID id) {
+    public void delete(@PathVariable("id") UUID id, @AuthenticationPrincipal User user) {
+        user.deleteById(id);
         toDoService.delete(id);
     }
 
     @PutMapping("{id}")
     public ToDoItem update(@PathVariable("id") UUID id,
-                       @RequestBody ToDoItem currentItem
-    ){
+                           @RequestBody ToDoItem currentItem,
+                           @AuthenticationPrincipal User user
+                           ){
 
-        return toDoService.update(id, currentItem);
+        return toDoService.update(id, currentItem, user);
     }
-
-    /*@GetMapping("{id}")
-    public String getOne(@PathVariable UUID id, Model model) {
-        return toDoService.getOne(id, model);
-    }*/
 
     @GetMapping("{id}")
     public ToDoItem getOne(@PathVariable UUID id) {
         return toDoService.getOne(id);
     }
 
-    /*@GetMapping
-    public String selectAll(Model model) {
-        model.addAttribute("todo", toDoService.selectAll());
-        return "index";
-    }*/
-
     @GetMapping
-    public List<ToDoItem> selectAll() {
-        return toDoService.selectAll();
+    public List<ToDoItem> selectAll(@AuthenticationPrincipal User user) {
+        return toDoService.selectAll(user);
     }
 
 }

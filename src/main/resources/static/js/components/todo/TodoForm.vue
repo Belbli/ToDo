@@ -70,35 +70,14 @@ import { mapActions } from 'vuex'
             save: function() {
                 const todo = { id: this.id, title: this.title, description: this.description, dateUntil: this.dateUntil};
                             if(this.id) {
-                                console.log('upd')
                                 this.updateTodoAction(todo)
-                                this.id = null;
-                                /*todoApi.update(todo).then(result => {
-                                    result.json().then(data => {
-                                        var index = this.todos.findIndex(item => item.id === data.id);
-                                        this.todos.splice(index, 1, data);
-                                        this.title = '';
-                                        this.description = '';
-                                        this.id = '';
-                                        this.dateUntil = '';
-                                    })
-                                })*/
                             } else {
-                                console.log('add')
                                 this.addTodoAction(todo)
-                                /*todoApi.add(todo).then(result => {
-                                        result.json().then(data => {
-                                            this.todos.push(data);
-                                            this.title = '';
-                                            this.description = '';
-                                            this.dateUntil = '';
-                                        })
-                                  }
-                                )*/
                             }
                             this.title = '';
-                                                                    this.description = '';
-                                                                    this.dateUntil = '';
+                            this.description = '';
+                            this.dateUntil = '';
+                            this.id = null;
             },
             formatDate (dateUntil) {
                     if (!dateUntil) return null

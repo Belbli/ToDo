@@ -6,10 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -28,7 +25,7 @@ public class ToDoItem {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateUntil;
 
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
-    private User author;*/
+    private User author;
 }
